@@ -20,7 +20,6 @@ var ngApp = angular.module('ngSeedApp',[
                                        'ngCookies',
                                        'ngRoute',
 									   'ngAnimate',
-									   'angular-gestures',
                                        'controllers',
                                        'services',
                                        'filters',
@@ -41,7 +40,7 @@ ngApp.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/hello.html',
-        controller: 'HelloCtrl'
+        controller: 'HelloController'
       })
       .otherwise({
         redirectTo: '/'
