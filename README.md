@@ -1,6 +1,7 @@
 angular-seed
 ============
 Just naked AngularJS project containing a master page and a view.
+
 Create your partitials under */views* and controller/service under */js/[viewName]*
 
 
