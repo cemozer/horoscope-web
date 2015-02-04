@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-4" ng-repeat="horoscope in horoscopeList">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						{{horoscope.id}} - {{horoscope.name}}
+					</div>
+					<div class="panel-body">
+						<textarea class="form-control" rows="3" ng-model="horoscope.text"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="pull-right">
+				<button type="button" class="btn btn-info btn-lg" ng-click="saveHoroscopeList()">Update</button>
+				<button type="button" class="btn btn-warning btn-lg" ng-click="push2Mobile()">Push</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="alert alert-success" role="alert" ng-show="showOperationState && operationState">{{operationName}} successfull.</div>
+			<div class="alert alert-danger" role="alert" ng-show="showOperationState && !operationState">{{operationName}} failed.</div>
+		</div>
+		
+	</div>
+</div>

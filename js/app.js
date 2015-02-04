@@ -34,13 +34,16 @@ ngApp.factory('mainService', function(){
 
 ngApp.controller('mainController', function($rootScope, $scope, $route){
 	$scope.angularready = true;
+	$rootScope.operationName = "";
+	$rootScope.operationState = true;
+	$rootScope.showOperationState = false;
 });
 
 ngApp.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/hello.html',
-        controller: 'HelloController'
+        templateUrl: 'views/content.html',
+        controller: 'ContentController'
       })
       .otherwise({
         redirectTo: '/'
