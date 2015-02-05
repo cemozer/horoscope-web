@@ -23,7 +23,7 @@
 		$items = $postData;
 		
 		foreach($items as &$item){
-			$sql = "UPDATE HOROSCOPE SET TEXT = '{$item->text}' WHERE ID = '{$item->id}'";
+			$sql = "UPDATE HOROSCOPE.HOROSCOPE SET TEXT = '{$item->text}' WHERE ID = '{$item->id}'";
 			pg_query($db, $sql);
 		}
 	

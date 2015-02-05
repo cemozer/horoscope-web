@@ -15,7 +15,7 @@
 	} 
 
 
-	$sql = "SELECT ID, NAME, TEXT FROM HOROSCOPE ORDER BY ID ASC ";
+	$sql = "SELECT ID, NAME, TEXT FROM HOROSCOPE.HOROSCOPE ORDER BY ID ASC ";
 
 
 	$rs = pg_query($db, $sql);
