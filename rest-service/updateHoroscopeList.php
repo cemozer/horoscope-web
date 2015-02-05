@@ -5,9 +5,14 @@
 	$response = array();
 	$response["data"] = array();
 	$response["status"] = "fail";
+	$response["message"] = "";
 	
 	$db = pg_connect(PG_CON_STR);
-	if(!$db) echo json_encode($response);
+	if(!$db){
+		$response["message"]= pg_last_error();
+		echo json_encode($response);
+		exit();
+	} 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -25,6 +30,7 @@
 		$response["status"] = "success";
 		echo json_encode($response);
 	}else{
+		$response["message"]= "Only POST supported";
 		echo json_encode($response);
 	}
 

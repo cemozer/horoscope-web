@@ -5,9 +5,14 @@
 	$response = array();
 	$response["data"] = array();
 	$response["status"] = "fail";
+	$response["message"] = "";
 	
 	$db = pg_connect(PG_CON_STR);
-	if(!$db) echo json_encode($response);
+	if(!$db){
+		$response["message"]= pg_last_error();
+		echo json_encode($response);
+		exit();
+	} 
 
 
 	$sql = "SELECT ID, NAME, TEXT FROM HOROSCOPE ORDER BY ID ASC ";
@@ -15,7 +20,11 @@
 
 	$rs = pg_query($db, $sql);
 	
-	if(!$rs) echo json_encode($response);
+	if(!$rs){
+		$response["message"]= pg_last_error();
+		echo json_encode($response);
+		exit();
+	} 
 	
 	while($row = pg_fetch_row($rs)){
 		$item = array();
