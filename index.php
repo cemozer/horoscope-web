@@ -1,0 +1,1 @@
+echo "Index php for heroku"
