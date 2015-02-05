@@ -10,7 +10,7 @@
 	$db = pg_connect(PG_CON_STR);
 	if(!$db){
 		$response["message"]= pg_last_error();
-		echo json_encode($response);
+		echo json_encode($response, JSON_UNESCAPED_UNICODE );
 		exit();
 	} 
 
@@ -22,7 +22,7 @@
 	
 	if(!$rs){
 		$response["message"]= pg_last_error();
-		echo json_encode($response);
+		echo json_encode($response, JSON_UNESCAPED_UNICODE );
 		exit();
 	} 
 	
@@ -37,7 +37,7 @@
 
 	$response["status"] = "success";
 
-	echo json_encode($response);
+	echo json_encode($response, JSON_UNESCAPED_UNICODE );
 	
 	pg_close($db);
 
