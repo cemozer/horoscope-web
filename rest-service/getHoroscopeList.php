@@ -17,7 +17,7 @@
 	
 	if(!$rs) echo json_encode($response);
 	
-	while($row = pg_fetch_row($rs){
+	while($row = pg_fetch_row($rs)){
 		$item = array();
 		$item["id"] = $row[0];
 		$item["name"] = $row[1];
