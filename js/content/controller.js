@@ -6,27 +6,41 @@ controllers.controller('ContentController', function($rootScope, $scope, Content
 	$scope.horoscopeList;
 	
 	$scope.init = function(){
-//		$scope.horoscopeList = ContentService.loadCurrentHoroscopeList();
-		$scope.horoscopeList = [{'id':1,
-								 'name':'Aslan',
-								 'text':'Lorem ipsum for aslan'},
-								 {'id':2,
-								  'name':'Baþak',
-								  'text':'Lorem ipsum for baþak'}];
+		var promise = ContentService.loadCurrentHoroscopeList();
+		promise.then(
+				function(data){
+					$scope.horoscopeList = data;
+				},
+				function(data){
+					$scope.horoscopeList = data;
+				});
 	}
 	
 	$scope.saveHoroscopeList = function(){
 		$rootScope.operationName = "Save horoscope list";
 		$rootScope.showOperationState = true;
-		$rootScope.operationState = true;
-//		ContentService.saveHoroscopeList($scope.horoscopeList);
+
+		ContentService.saveHoroscopeList($scope.horoscopeList);
+		
+		var promise = ContentService.loadCurrentHoroscopeList();
+		promise.then(
+				function(data){
+					if(data){
+						$rootScope.operationState = true;
+					}
+				},
+				function(data){
+					if(!data){
+						$rootScope.operationState = false;
+					}
+				});
 	}
 	
 	$scope.push2Mobile = function(){
 		$rootScope.operationName = "Push horoscope list";
 		$rootScope.showOperationState = true;
 		$rootScope.operationState = true;
-//		ContentService.push2Mobile();
+		ContentService.push2Mobile();
 	}
 	
 	$scope.init();

@@ -1,3 +1,5 @@
+var REST_BASE = "http://horoscope-web.herokuapp.com/rest-service/";
+
 //controllers
 var controllers = angular.module('controllers',[]);
 
